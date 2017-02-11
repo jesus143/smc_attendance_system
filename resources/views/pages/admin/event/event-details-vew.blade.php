@@ -1,0 +1,1 @@
+This is the deils of the event, where you can add the attendance and sort attendance student

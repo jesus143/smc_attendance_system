@@ -14,13 +14,26 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->string('name')->default("");
+            $table->string('venue')->default("");
             $table->string('description')->default("");
-            $table->string('college')->default("");
+            
+            $table->string('sponsor_personnels')->default("");
+            $table->string('sponsor_students')->default("");
+            $table->string('sponsor_collge')->default("");
+            $table->string('sponsor_year')->default(""); 
+
+            $table->string('participant_collge')->default("");
+            $table->string('participant_religion')->default("");
+            $table->string('participant_year')->default(""); 
+
             $table->dateTime('date_time_start');
             $table->dateTime('date_time_end');
+
             $table->timestamps();
+
         });
     }
 

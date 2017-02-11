@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+ use App\Personnel;
+ use App\Student;
+ use App\Event;
 
 class EventController extends Controller
-{
+{ 
+
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $personnels = Personnel::getAllOrderByDesc();  
+        $students   = Student::getAllOrderByDesc();
+        $events   = Event::getAllOrderByDesc();
+
+        return view('pages/admin/event-home', compact('personnels', 'students', 'events')); 
     }
 
     /**
@@ -34,7 +43,25 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+
+            $data = $request->except('_token');
+         
+
+            $newDate = []; 
+            foreach ($data as $key => $value) {  
+                if(is_array($value))  {
+                    $value = implode(', ', $value);
+                }
+                $newData[$key] = $value; 
+            } 
+            Event::create($newData); 
+
+            return redirect()
+                    ->back()
+                    ->with('status', 'Successfully added new event!');
     }
 
     /**
@@ -45,7 +72,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return "show specific event";
+        // return view('pages/')
     }
 
     /**
@@ -56,7 +84,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("pages/admin/event-details");
     }
 
     /**
@@ -79,6 +107,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Event::find($id)->delete();
+        return redirect()->back()->with('status', 'Successfully deleted!');
     }
 }

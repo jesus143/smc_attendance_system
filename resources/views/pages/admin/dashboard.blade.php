@@ -9,10 +9,8 @@
         <div class="col-md-10 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div> 
-                <div class="panel-body"> 
-                    @include("pages/admin/includes/event-add") 
-                    <hr>
-                    @include("pages/admin/includes/event-view") 
+                <div class="panel-body">  
+                    This is the feed
                 </div>
             </div>
         </div>

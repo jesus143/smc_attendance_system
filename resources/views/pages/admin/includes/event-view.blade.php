@@ -1,30 +1,67 @@
 
 <h3> Event List </h3>
-<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Venue</th>
-        <th>Colleges</th> 
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Total Attendance</th>
-      </tr>
-    </thead>
-    <tbody>
 
-      <?php for($i =0; $i<3; $i++) {?>
-      <tr>
-        <td>Recollection</td>
-        <td>This is the recollection for 4rth year student only</td>
-        <td>CDO, St. Conception</td>
-        <td>CECS, BSBA, COC</td>
-        <td>Jan 20, 2017 7:30 am</td>
-        <td>Jan 20, 2017 5:30 pm</td>
-        <td><a href="{{route('pages.attendance.event', rand(1, 10))}}"><?php print rand(1, 10); ?> </a></td>
-      </tr> 
-      <?php } ?>
+  <div id="signupbox" style=" margin-top:50px; width:100%"  >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">Personnel View</div> 
+        </div>  
+        <div class="panel-body" > 
+        
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
-    </tbody>
-  </table>
+
+           <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr> 
+                        <th>name</th>
+                        <th>venue</th>
+                        <th>description</th> 
+                        <th>date_time_start</th>
+                        <th>date_time_end</th>
+                        <th>Details</th>
+                        {{-- <th>Edit</th> --}}
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>name</th>
+                        <th>venue</th>
+                        <th>description</th> 
+                        <th>date_time_start</th>
+                        <th>date_time_end</th>
+                        <th>Details</th>
+                        {{-- <th>Edit</th> --}}
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+                <tbody> 
+                    @foreach($events as $event)
+                        <tr> 
+                            <td>{{$event->name}}</td>
+                            <td>{{$event->venue}}</td>
+                            <td>{{$event->description}}</td> 
+                            <td>{{$event->date_time_start}}</td>
+                            <td>{{$event->date_time_end}}</td>  
+                            <td> <a href="{{route('attendance.show', $event->id)}}">Details</a> </td>
+                            {{-- <td> <a href="{{route('event.edit', $event->id)}}">Edit</a> </td> --}}
+                            <td> 
+                            <form action="{{route('event.destroy', $event->id)}}" method="POST" accept-charset="utf-8">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="delete" /> 
+                                </form> 
+                            </td> 
+
+                        </tr>
+                    @endforeach  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
