@@ -3,6 +3,7 @@
 namespace App;
 use App\Personnel;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Personnel extends Model
 {
@@ -50,7 +51,24 @@ class Personnel extends Model
         } 
         return $numbers;
       }
-    } 
+    }
+
+
+    public static function getPersonnelNumberUnderCollege($participant_college)
+    {
+
+        $pcollege = str_replace(" ", "", $participant_college);
+        $pcollege = explode(',' , $pcollege);
+
+        $personnels = DB::table('personnels')->whereIn('department', $pcollege)->get();
+
+        $mobileNumber = [];
+        foreach($personnels as $personnel):
+            $mobileNumber[] = $personnel->mobile_number;
+        endforeach;
+
+        return $mobileNumber;
+    }
 
     public static function listIdToArray($listId) {
         $listIdArr = []; 

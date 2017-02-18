@@ -42,11 +42,11 @@ class SmsController extends Controller
         $id = $request->get('send_to');     
         $message         = $request->get('message');     
         $event           = Event::find($id);    
-        
+
+        $mobileNumberPersonnelBelongsToCollege = Personnel::getPersonnelNumberUnderCollege($event->participant_collge);
         $personelNumbers = Personnel::composeNumberAsArray($event->sponsor_personnels);     
         $studentNumbers  = Student::getStudentEventMobileNumbers($event->participant_collge, $event->participant_year);  
-   
- 
+
         if(!empty($personelNumbers) and !empty($studentNumbers)) {  
             $arrayNumbers = array_merge($personelNumbers, $studentNumbers);
         } else if(!empty($personelNumbers)) { 
@@ -55,7 +55,17 @@ class SmsController extends Controller
             $arrayNumbers = $studentNumbers;
         } else {
             $arrayNumbers = [''];
-        } 
+        }
+
+        if(!empty($mobileNumberPersonnelBelongsToCollege)) {
+            $arrayNumbers = array_merge($arrayNumbers, $mobileNumberPersonnelBelongsToCollege);
+        }
+
+        //        print "<pre>";
+        //        print_r($arrayNumbers);
+        //
+        //        exit;
+
         // $arrayNumbers    = Sms::mergeNumbers($student, $personnel);  
         // print_r( $personelNumbers); 
         // print_r( $studentNumbers); 
@@ -65,7 +75,7 @@ class SmsController extends Controller
         // print "<pre>";
         // print_r($arrayNumbers);
         // exit; 
-        $tatus = Sms::sendSms($arrayNumbers, env('SMS_DEVICE_ID'), $message);  
+        $tatus = Sms::sendSms($arrayNumbers, env('SMS_DEVICE_ID'), env('SMS_USER'), env('SMS_PASS'), $message);
         // print_r($tatus);
         // exit; 
        return redirect()->back()->with('status', 'message is comming to students and faculty soon..');  

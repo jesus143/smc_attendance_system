@@ -1,8 +1,13 @@
 <?php 
 if(!session_id()) {
 	session_start();	
-} 
- 
-$postLogin = 'http://localhost/project/smc_attendance_system/student/PostLogin'; 
-$postLoginPersonnel = 'http://localhost/project/smc_attendance_system/personnel/PostLogin';
+}
+
+require_once ('../index.php');
+
+$url = url('');
+$url = str_replace('home/index.php', '', $url);
+
+$postLogin = $url . 'student/PostLogin';
+$postLoginPersonnel = $url . '/personnel/PostLogin';
 ?>

@@ -7,11 +7,13 @@ use App\Classes\SmsGateway;
 
 class Sms extends Model
 {
-    public static function sendSms($numbers=[], $deviceID=36605, $message='')
+    public static function sendSms($numbers=[], $deviceID='', $username='', $password='', $message='')
     {     
-
+        //        print_r($numbers);
+        //        print " $deviceID $username, $password ";
+        //        exit;
         // print  " messages = " . $message;
-        $smsGateway = new SmsGateway('mrjesuserwinsuarez@gmail.com', 'replacement1');   
+        $smsGateway = new SmsGateway($username, $password);
         // $deviceID = 36605; 
         // $message = 'Hello World!'; 
         // $options = [
