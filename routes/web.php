@@ -12,10 +12,17 @@ Route::get('admin/dashboard', 'PagesController@Dashboard')->name('pages.dashboar
 Route::get('admin/sms', 'PagesController@Sms')->name('pages.sms'); 
 Route::get('admin/attendance', 'PagesController@Attendance')->name("pages.attendance"); 
 Route::get('admin/attendance/event/{id?}', 'PagesController@AttendanceEvent')->name("pages.attendance.event");
-Route::get('student/profile', 'PagesController@studentProfile')->middleware('authStudent')->name("student.profile"); 
- 
+
+
+
+
+Route::get('student/profile', 'PagesController@studentProfile')->middleware('authStudent')->name("student.profile");
 Route::post('student/PostLogin', 'StudentController@PostLogin')->name("student.post.login");
 Route::get('student/logout', 'StudentController@LogOut')->name("student.logout");
+
+Route::get('personnel/profile', 'PagesController@personnelProfile')->middleware('authPersonnel')->name("personnel.profile");
+Route::post('personnel/PostLogin', 'PersonnelController@PostLogin')->name("personnel.post.login");
+Route::get('personnel/logout', 'PersonnelController@LogOut')->name("personnel.logout");
 
 
 

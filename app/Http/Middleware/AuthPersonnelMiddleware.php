@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthStudentMiddleware
+class AuthPersonnelMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,11 +14,10 @@ class AuthStudentMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    { 
-        // print "this is the url " . PRINT url('home/index.php');
-        if(empty(session('authStudent'))) {
+    {
+        if(empty(session('authPersonnel'))) {
             return redirect( url('home/index.php') );
-        } 
-        return $next($request);  
+        }
+        return $next($request);
     }
 }

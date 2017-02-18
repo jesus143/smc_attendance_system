@@ -150,7 +150,7 @@ require_once('config.php');
 								</label>
 								<input type="password" placeholder="Password" required autocomplete="off"/>
 							  </div>
-							  
+
 							  <button type="submit" class="button button-block"/>Get Started</button>
 							  
 							  </form>
@@ -158,9 +158,7 @@ require_once('config.php');
 							</div>
 							
 							<div id="login" style="display:block">   
-							  <h1>Welcome Back!</h1>  
-                                    
-
+							  <h1>Welcome Back!</h1>
                                 <?php if (!empty(session('status'))): ?>
                                     <div class="alert alert-danger">
                                         <?php  
@@ -169,6 +167,8 @@ require_once('config.php');
                                     </div>
                                 <?php endif ?>
 
+                                <h2 class="pull-left" > Student Login </h2>
+                              <!-- student login -->
 							  <form action="<?php print $postLogin; ?>" method="post">
 							   <?php 
                                     print csrf_field(); 
@@ -187,8 +187,34 @@ require_once('config.php');
 							  </div> 
 							  <p class="forgot" style="display:none"><a href="#">Forgot Password?</a></p> 
 							  <button class="button button-block"/>Log In</button> 
-							  </form> 
-							</div>  
+							  </form>
+
+
+                                <br>
+
+                                <h2 class="pull-left"> Personnel Login </h2>
+                            <!-- personnel login -->
+                            <form action="<?php print $postLoginPersonnel; ?>" method="post">
+                                <?php
+                                print csrf_field();
+                                ?>
+                                <div class="field-wrap">
+                                    <label>
+                                        Email Address<span class="req">*</span>
+                                    </label>
+                                    <input name="id_number" type="text" placeholder="Id Number" required autocomplete="off"/>
+                                </div>
+                                <div class="field-wrap">
+                                    <label>
+                                        Password<span class="req">*</span>
+                                    </label>
+                                    <input name="password" type="password" placeholder="Password" required autocomplete="off"/>
+                                </div>
+                                <p class="forgot" style="display:none"><a href="#">Forgot Password?</a></p>
+                                <button class="button button-block"/>Log In</button>
+                            </form>
+
+                            </div>
 						  </div><!-- tab-content --> 
 					</div> <!-- /form -->
 					  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 

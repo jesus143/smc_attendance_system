@@ -8,6 +8,26 @@ use DB;
 
 class PersonnelController extends Controller
 {
+
+    public function PostLogin(Request $request) {
+
+        $idNumner = $request->get('id_number');
+        $password = $request->get('password');
+        $authPersonnel = Personnel::where('id_number',  $idNumner)->where('last_name', $password)->get()->first();
+
+        if (!empty($authPersonnel)){
+
+            session(['authPersonnel'=>$authPersonnel]);
+
+            return redirect()->route('personnel.profile');
+
+        } else  {
+            session(['status' => 'Ophs, something wrong with personnel info! Please try again.']);
+            return back();
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -80,9 +100,19 @@ class PersonnelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_method', '_token']);
+        // dd($data);
+        Personnel::Find($id)->update($data);
+        return redirect()->back()->with('status', 'Successfully updated!');
     }
+    public function LogOut()
+    {
+        print " logout personnel information";
+        session(['authPersonnel'=>'']);
+        session(['status'=>'']);
 
+        return redirect(url('home/index.php'));
+    }
     /**
      * Remove the specified resource from storage.
      *

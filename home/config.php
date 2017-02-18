@@ -4,4 +4,5 @@ if(!session_id()) {
 } 
  
 $postLogin = 'http://localhost/project/smc_attendance_system/student/PostLogin'; 
-?> 
+$postLoginPersonnel = 'http://localhost/project/smc_attendance_system/personnel/PostLogin';
+?>

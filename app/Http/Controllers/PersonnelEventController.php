@@ -70,23 +70,27 @@ class PersonnelEventController extends Controller
 
 
 
-            print_r($eventDetails->sponsor_personnels);
+            print_r($eventDetails->participant_collge);
             print " personnel " .  $personnelInfo->id;
 
 
 
-            $sponsorPersonnels = explode(',', $eventDetails->sponsor_personnels);
+
+            $participant_college = str_replace(" ", '', $eventDetails->participant_collge);
+
+            $sponsorPersonnels = explode(',', $participant_college);
 
 
-            print_r($sponsorPersonnels);
+//            print_r($sponsorPersonnels);
+
+            PRINT " Department " . $personnelInfo->department;
+
+//            EXIT;
             // check college
-            $inEvent = strpos($eventDetails->sponsor_personnels, $personnelInfo->id);
-
-
-
-            if(!in_array($personnelInfo->id, $sponsorPersonnels)) {
-                return redirect()->back()->with("message", "This personnel is not in the event");
-            }
+//            $inEvent = strpos($eventDetails->participant_collge, $personnelInfo->department);
+//            if(!in_array($personnelInfo->department, $sponsorPersonnels)) {
+//                return redirect()->back()->with("message", "This this event only accept personnel from college " . $eventDetails->participant_collge . ' but your ' . $personnelInfo->department);
+//            }
 
 
             $isExist = PersonnelEvent::where('event_id', $request->get('event_id'))->where('personnel_id', $personnelInfo->id)->count();
