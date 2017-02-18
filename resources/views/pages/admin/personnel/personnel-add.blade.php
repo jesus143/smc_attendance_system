@@ -17,8 +17,14 @@
                 <form method="post" action="{{route('personnel.store')}}">
 
                         {{csrf_field()}}
+                    <div id="div_id_username" class="form-group required">
+                        <label for="id_username" class="control-label col-md-4  requiredField">Id Number<span class="asteriskField">*</span> </label>
+                        <div class="controls col-md-8 ">
+                            <input class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="id_number" placeholder="First Name" style="margin-bottom: 10px" type="text" />
+                        </div>
+                    </div>
 
-                        <div id="div_id_username" class="form-group required">
+                    <div id="div_id_username" class="form-group required">
                             <label for="id_username" class="control-label col-md-4  requiredField">First Name<span class="asteriskField">*</span> </label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="first_name" placeholder="First Name" style="margin-bottom: 10px" type="text" />

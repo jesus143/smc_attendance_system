@@ -15,9 +15,10 @@ class CreatePersonnelsTable extends Migration
     {
         Schema::create('personnels', function (Blueprint $table) {
             $table->increments('id'); 
-            $table->string("first_name"); 
-            $table->string("last_name");  
-            $table->string("mobile_number");   
+            $table->string("id_number");
+            $table->string("first_name");
+            $table->string("last_name");
+            $table->string("mobile_number");
             $table->string("position");    
             $table->string("department");    
             $table->string("gender");    

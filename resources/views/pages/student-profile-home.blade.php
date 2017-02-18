@@ -11,7 +11,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div> 
                 <div class="panel-body">
+
                     @include("pages/user/student-profile-view");
+
+                    @include("pages/user/student-profile-notification-view");
+
+                    @include("pages/user/student-profile-attendance-view");
+
                 </div>
             </div>
         </div>

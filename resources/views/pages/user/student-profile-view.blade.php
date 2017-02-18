@@ -14,7 +14,7 @@
                         <i class="green ace-icon fa fa-user bigger-120"></i>
                         Profile
                     </a>
-                </li> 
+                </li>
             </ul> 
             <div class="tab-content no-border padding-24">
                 <div id="home" class="tab-pane in active">

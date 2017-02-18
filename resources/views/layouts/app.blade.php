@@ -104,9 +104,16 @@ $(document).ready(function() {
          "paging":   5,
         "sPaginationType": "full_numbers",
         "bFilter": true,
-        // "sDom":"lrtip" 
-       });  
-      
+        // "sDom":"lrtip"
+       });
+
+      $("#example1").dataTable({
+         "paging":   5,
+        "sPaginationType": "full_numbers",
+        "bFilter": true,
+        // "sDom":"lrtip"
+       });
+
       // sorting
       var oTable;
       oTable = $('#example').dataTable(); 
