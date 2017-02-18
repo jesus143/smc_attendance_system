@@ -106,4 +106,31 @@ class AttendanceController extends Controller
         return redirect()->back()->with('delete_student_attendance_status', 'Successfully deleted attendance');
 
     }
+
+
+    public function printStudent($event_id) {
+
+        $eventDetails = DB::table('events')
+            ->join('student_events', 'events.id', '=', 'student_events.event_id')
+            ->join('students', 'students.id', '=', 'student_events.student_id')
+            ->select('student_events.*', 'events.*', 'students.*')
+            ->where('events.id', $event_id)
+            ->get();
+
+
+        return view('pages/admin/attendance/attendance-print-student', compact('eventDetails'));
+    }
+    public function printPersonnel($event_id) {
+
+        $eventDetails = DB::table('events')
+            ->join('personnel_events', 'events.id', '=', 'personnel_events.event_id')
+            ->join('personnels', 'personnels.id', '=', 'personnel_events.personnel_id')
+            ->select('personnel_events.*', 'events.*', 'personnels.*')
+            ->where('events.id', $event_id)
+            ->get();
+
+
+
+        return view('pages/admin/attendance/attendance-print-personnel', compact('eventDetails'));
+    }
 }

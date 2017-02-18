@@ -135,4 +135,8 @@ class EventController extends Controller
         Event::find($id)->delete();
         return redirect()->back()->with('status', 'Successfully deleted!');
     }
+
+
+
+
 }

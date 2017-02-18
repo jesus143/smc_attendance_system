@@ -60,4 +60,8 @@ class Student extends Model
         $listIdArr = explode(",", $listId); 
         return $listIdArr; 
     }
+    public static function fullNameByStudentId($id) {
+        $student = self::find($id);
+        return $student->first_name . ' ' . $student->last_name;
+    }
 }

@@ -38,7 +38,9 @@
                     </tr>
                 </tfoot>
                 <tbody> 
-                   @include("pages/admin/includes/religion-sorting")     
+                   @include("pages/admin/includes/religion-sorting")
+
+
                     @foreach($studentEvents as $attendant)  
                         <tr>
                             <td> {{$attendant->first_name . ' ' . $attendant->last_name }}</td>  
@@ -58,6 +60,11 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <a href="{{route('attendance.print.student', $id)}}" >
+                <input type="button" value="print" class="alert alert-info" />
+            </a>
+
         </div>
     </div>
 </div>

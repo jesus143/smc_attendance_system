@@ -42,11 +42,14 @@
                             <td> {{$attendant->position}}</td>
                             <td> {{$attendant->status_in}}</td>  
                             <td> {{$attendant->status_out}}</td>  
-                            <td>{{$attendant->created_at}}</td>
+                            <td> {{$attendant->created_at}}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <a href="{{route('attendance.print.personnel', $id)}}" >
+                <input type="button" value="print" class="alert alert-info" />
+            </a>
         </div>
     </div>
 </div>
