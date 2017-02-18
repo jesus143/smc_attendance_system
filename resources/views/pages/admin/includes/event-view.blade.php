@@ -20,6 +20,7 @@
                     <tr> 
                         <th>name</th>
                         <th>venue</th>
+                        <th>priest name </th>
                         <th>description</th> 
                         <th>date_time_start</th>
                         <th>date_time_end</th>
@@ -32,7 +33,8 @@
                     <tr>
                         <th>name</th>
                         <th>venue</th>
-                        <th>description</th> 
+                        <th>priest name </th>
+                        <th>description</th>
                         <th>date_time_start</th>
                         <th>date_time_end</th>
                         <th>Details</th>
@@ -45,7 +47,8 @@
                         <tr> 
                             <td>{{$event->name}}</td>
                             <td>{{$event->venue}}</td>
-                            <td>{{$event->description}}</td> 
+                            <td>{{$event->priest_name}}</td>
+                            <td>{{$event->description}}</td>
                             <td>{{$event->date_time_start}}</td>
                             <td>{{$event->date_time_end}}</td>  
                             <td> <a href="{{route('attendance.show', $event->id)}}">Details</a> </td>

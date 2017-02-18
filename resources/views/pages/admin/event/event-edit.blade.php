@@ -22,11 +22,17 @@
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type event name" name="name" value="{{$eventDetails->name}}" />
     
   </div>
-  <div class="form-group">
+    <div class="form-group">
       <label for="exampleInputEmail1">Venue</label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type event description" name="venue" value="{{$eventDetails->venue}}" />
-      
     </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Priest Name</label>
+        <input type="text" class="form-control" id="priest_name" aria-describedby="emailHelp" placeholder="Priest Name" name="priest_name"  value="{{$eventDetails->priest_name}}" />
+    </div>
+
+
     <div class="form-group">
       <label for="exampleInputEmail1">Description</label>
       <textarea name="description" placeholder="Type event description" class="form-control" style="resize:none" >{{$eventDetails->description}}</textarea>

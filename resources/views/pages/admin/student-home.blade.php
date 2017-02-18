@@ -14,7 +14,7 @@
                     <hr> --}}
                     {{-- @include("pages/admin/student/student-add")  --}}
                     <hr>
-                    @include("pages/admin/student/student-view") 
+                    @include("pages/admin/student/student-view")
                 </div>
             </div>
         </div>

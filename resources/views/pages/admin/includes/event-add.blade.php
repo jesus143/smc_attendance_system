@@ -23,13 +23,18 @@
   <div class="form-group">
       <label for="exampleInputEmail1">Venue</label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type event description" name="venue" />
-      
     </div>
+
     <div class="form-group">
+      <label for="exampleInputEmail1">Priest Name</label>
+      <input type="text" class="form-control" id="priest_name" aria-describedby="emailHelp" placeholder="Priest Name" name="priest_name" />
+    </div>
+
+  <div class="form-group">
       <label for="exampleInputEmail1">Description</label>
       <textarea name="description" placeholder="Type event description" class="form-control" style="resize:none" ></textarea>
-      
-    </div> 
+    </div>
+
 
   <div class="form-group">
       <label for="exampleInputEmail1">Sponsor</label>  

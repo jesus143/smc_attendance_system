@@ -26,6 +26,9 @@ Route::get('student/logout', 'StudentController@LogOut')->name("student.logout")
 // Route::post('student/postLogin', 'StudentController@PostLogin')->name('student.post.login');
 
 
+Route::get('student/search/{id}', 'StudentController@searchDetail')->name('student.search.detail');
+
+
 // default and resources routes
 Route::resource('user', 'UserController');
 Route::resource('attendance', 'AttendanceController');

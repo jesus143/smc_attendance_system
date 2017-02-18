@@ -1,5 +1,4 @@
-
-<h3>Student List</h3> 
+  <h3>Student List</h3>
   <div id="signupbox" style=" margin-top:50px; width:100%"  >
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -15,8 +14,9 @@
                         <th>Mobile Number</th> 
                         <th>Year level</th> 
                         <th>Course</th> 
-                        <th>Gender</th>    
-                        <th>Religion Description</th>   
+                        <th>Gender</th>
+                        <th>Religion Description</th>
+                        <th>View Attendance</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -28,7 +28,8 @@
                         <th>Year level</th> 
                         <th>Course</th> 
                         <th>Gender</th>   
-                        <th>Religion Description</th>   
+                        <th>Religion Description</th>
+                        <th>View Attendance</th>
                     </tr>
                 </tfoot>
                 <tbody>   
@@ -48,12 +49,13 @@
                         <td> {{$student->mobile_number}} </td>
                         <td> {{$student->year_level}} </td>
                         <td> {{$student->course}} </td>
-                        <td> {{$student->gender}} </td>  
+                        <td> {{$student->gender}} </td>
                         <td> {{$student->bio}} </td>  
+                        <td> <a href="{{route('student.search.detail', $student->id)}}">Attendace Details</a> </td>
                       </tr>
                     @endforeach 
                 </tbody>
             </table>
         </div>
     </div>
-</div>
+  </div>

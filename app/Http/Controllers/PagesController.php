@@ -45,9 +45,9 @@ class PagesController extends Controller
             $studentName['Religion Specification'] = $studentInfo->religion;
             $studentName['Religion Description'] = $studentInfo->bio; 
             $studentName['Religion Description'] = $studentInfo->bio; 
-            $studentName['Year Level'] = $studentInfo->year_level; 
+            $studentName['Year Level'] = $studentInfo->year_level;
 
-            // dd($authStudent);  
+		
 		return view("pages/student-profile-home", compact('studentName', 'id'));
 	} 
 

@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name')->default("");
             $table->string('venue')->default("");
+            $table->string('priest_name')->default();
             $table->string('description')->default("");
             
             $table->string('sponsor_personnels')->default("");

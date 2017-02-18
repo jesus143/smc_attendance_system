@@ -99,8 +99,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     { 
-        // dd($request->all());
-        // 
+        //         dd($request->all());
         if(empty($request->get('date_time_start')) or  empty($request->get('date_time_end'))) {
             return redirect()
                 ->back()
@@ -109,13 +108,15 @@ class EventController extends Controller
          
         $data = $request->except('_token');
       
-        $newDate = []; 
+        $newDate = [];
+
         foreach ($data as $key => $value) {  
             if(is_array($value))  {
                 $value = implode(', ', $value);
             }
             $newData[$key] = $value; 
-        } 
+        }
+
         Event::find($id)->update($newData); 
 
         return redirect()
