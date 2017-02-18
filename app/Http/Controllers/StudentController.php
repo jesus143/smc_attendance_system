@@ -14,8 +14,13 @@ class StudentController extends Controller
         $idNumner = $request->get('id_number'); 
         $password = $request->get('password');     
         $authStudent = Student::where('id_number',  $idNumner)->where('last_name', $password)->get()->first(); 
-        session(['authStudent'=>$authStudent]);   
+
+ 
+
         if (!empty($authStudent)){
+ 
+                session(['authStudent'=>$authStudent]);   
+
             return redirect()->route('student.profile'); 
         } else  { 
             session(['status' => 'Ophs, something wrong! Please try again.']);
@@ -95,7 +100,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_method', '_token']); 
+        // dd($data);  
+        Student::Find($id)->update($data); 
+        return redirect()->back()->with('status', 'Successfully updated!');
     }
 
     /**

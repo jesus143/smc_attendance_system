@@ -21,7 +21,8 @@
                         
                         <th>Name</th>
                         <th>Religion</th>
-                        <th>Status</th>
+                        <th>In</th>
+                        <th>Out</th>
                         <th>In Time</th>  
                         <th>Delete</th>
                     </tr>
@@ -30,7 +31,8 @@
                     <tr>
                         <th>Name</th>
                         <th>Religion</th>
-                        <th>Status</th>
+                        <th>In</th>
+                        <th>Out</th>
                         <th>In Time</th>  
                         <th>Delete</th>
                     </tr>
@@ -41,7 +43,8 @@
                         <tr>
                             <td> {{$attendant->first_name . ' ' . $attendant->last_name }}</td>  
                             <td> {{$attendant->religion}}</td>  
-                            <td> {{$attendant->status}}</td>  
+                            <td> {{$attendant->status_in}}</td>  
+                            <td> {{$attendant->status_out}}</td>  
                             <td>{{$attendant->created_at}}</td>  
 
                             <td> 

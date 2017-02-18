@@ -50,7 +50,17 @@ class StudentEventController extends Controller
                         ->withInput();
         } 
 
-        $data = $request->except('_token');   
+
+        $data = $request->except('_token');    
+        if($request->get('status') == 'in') { 
+            $data['status_in'] = 'in';
+        } else {
+            $data['status_out'] = 'out';
+        }  
+       unset($data['status']); 
+
+       // dd($data);
+
         $studentInfo = Student::where('id_number', $request->get('student_id'))->first();   
 
 
@@ -80,11 +90,13 @@ class StudentEventController extends Controller
                 // exit;  
                  
             // check religion
+                /*
                $inReligion = strpos($eventDetails->participant_religion, $studentInfo->religion); 
                  if($inReligion > -1 ) {
                 } else { 
                     return redirect()->back()->with("message", 'Your religion is ' . $studentInfo->religion . ' and but only ' . $eventDetails->participant_religion . ' is allowed for this event');
-                }              
+                } 
+                */             
 
             // participant year
                 $inLevel= strpos($eventDetails->participant_year, $studentInfo->year_level); 
@@ -104,18 +116,26 @@ class StudentEventController extends Controller
 
 
 
-            $isExist = StudentEvent::where('event_id', $request->get('event_id'))->where('student_id', $studentInfo->id)->where('status', $request->get('status'))->count(); 
+            // $isExist = StudentEvent::where('event_id', $request->get('event_id'))->where('student_id', $studentInfo->id)->where('status', $request->get('status'))->count(); 
+             
+            $isExist = StudentEvent::where('event_id', $request->get('event_id'))->where('student_id', $studentInfo->id)->count(); 
             $data['student_id'] = $studentInfo->id;
         } else {
             return redirect()->back()->with("message", 'No student found for the student id number');
         }
            
         // print "total " .  $isExist;
-        if(!$isExist) {   
+        if(!$isExist) {    
+            print "insert ";
             StudentEvent::create($data);   
-        }     else { 
-            return redirect()->back()->with("message", 'Already signed in');
-        }
+        } else { 
+            print "update " . $studentInfo->id;
+            StudentEvent::where('student_id',  $studentInfo->id)
+            ->update($data);
+            // $studentEvent = StudentEvent::find($studentInfo->id);    
+            // $studentEvent->update($data);  
+        } 
+            // dd($data); 
          
         if($request->get('status') == 'in') { 
             return redirect()->back()->with("message", 'Successfully signed in');

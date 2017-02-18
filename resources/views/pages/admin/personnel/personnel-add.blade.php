@@ -40,21 +40,21 @@
                             <label for="id_username" class="control-label col-md-4  requiredField">Position <span class="asteriskField">*</span> </label>
                             <div class="controls col-md-8 "> 
                                 <select name="position" class="form-control" style="margin-bottom: 10px" > 
-                                    <option>Please Select Position..</option>
-                                    <option>Administrator</option>
-                                    <option>Faculty</option>
-                                    <option>Staff</option>
-                                    <option>Dean</option>
+                                    <option>Please Select Position..</option>  
+                                    @foreach($data['position'] as $position) 
+                                        <option value="{{$position}}">{{$position}}</option> 
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                          <div id="div_id_username" class="form-group required">
-                            <label for="id_username" class="control-label col-md-4  requiredField">Department<span class="asteriskField">*</span> </label>
+                            <label for="id_username" class="control-label col-md-4  requiredField">College<span class="asteriskField">*</span> </label>
                             <div class="controls col-md-8 "> 
                                 <select name="department" class="form-control" style="margin-bottom: 10px" > 
-                                    <option>Please Select Department..</option>
-                                    <option>CECS</option>
-                                    <option>COC</option> 
+                                    <option>Please Select College..</option> 
+                                     @foreach($data['college'] as $college) 
+                                        <option value="{{$college}}">{{$college}}</option> 
+                                    @endforeach
                                 </select>
                             </div>
                         </div>  

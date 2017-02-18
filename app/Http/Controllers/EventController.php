@@ -43,13 +43,9 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
+ 
             $data = $request->except('_token');
-         
-
+          
             $newDate = []; 
             foreach ($data as $key => $value) {  
                 if(is_array($value))  {
@@ -72,7 +68,14 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return "show specific event";
+
+         $personnels  = Personnel::getAllOrderByDesc();  
+        $students     = Student::getAllOrderByDesc();
+        $events       = Event::getAllOrderByDesc();
+        $eventDetails = Event::find($id);
+
+        return view('pages/admin/event-home', compact('personnels', 'students', 'events', 'eventDetails', 'id'));  
+        // return "show specific event";
         // return view('pages/')
     }
 
@@ -95,8 +98,29 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        // dd($request->all());
+        // 
+        if(empty($request->get('date_time_start')) or  empty($request->get('date_time_end'))) {
+            return redirect()
+                ->back()
+                ->with('status', 'Ohps, please add your event start and end time');
+        }
+         
+        $data = $request->except('_token');
+      
+        $newDate = []; 
+        foreach ($data as $key => $value) {  
+            if(is_array($value))  {
+                $value = implode(', ', $value);
+            }
+            $newData[$key] = $value; 
+        } 
+        Event::find($id)->update($newData); 
+
+        return redirect()
+                ->back()
+                ->with('status', 'Successfully updated event!');
     }
 
     /**

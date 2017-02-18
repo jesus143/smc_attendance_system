@@ -17,7 +17,8 @@ class CreateStudentEventsTable extends Migration
             $table->increments('id');
             $table->string("student_id");
             $table->integer("event_id")->unsigned();
-            $table->string("status");
+            $table->string("status_in")->default('');
+            $table->string("status_out")->default('');
             $table->timestamps();
         });
     } 

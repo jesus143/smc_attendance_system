@@ -12,7 +12,7 @@
                 <div class="panel-body">  
                     {{-- @include("pages/admin/student/student-test-datatable")   
                     <hr> --}}
-                    @include("pages/admin/student/student-add") 
+                    {{-- @include("pages/admin/student/student-add")  --}}
                     <hr>
                     @include("pages/admin/student/student-view") 
                 </div>

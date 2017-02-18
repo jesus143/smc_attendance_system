@@ -10,7 +10,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div> 
                 <div class="panel-body"> 
-                    @include("pages/admin/includes/event-add", compact('personnels', 'students')) 
+             
+                    @if(!empty($eventDetails))
+                        @include("pages/admin/event/event-edit", compact('students','personnels', 'eventDetails', 'id')) 
+                    @else
+                        @include("pages/admin/includes/event-add", compact('personnels', 'students')) 
+                    @endif
                     <hr>
                     @include("pages/admin/includes/event-view", compact('events')) 
                 </div>

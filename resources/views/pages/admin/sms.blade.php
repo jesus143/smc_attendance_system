@@ -7,6 +7,13 @@
             @include("pages/admin/includes/left-sidebar")
         </div>
         <div class="col-md-10 ">
+        
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div> 
                 <div class="panel-body">

@@ -36,7 +36,7 @@
                         <th>date_time_start</th>
                         <th>date_time_end</th>
                         <th>Details</th>
-                        {{-- <th>Edit</th> --}}
+                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </tfoot>
@@ -50,7 +50,12 @@
                             <td>{{$event->date_time_end}}</td>  
                             <td> <a href="{{route('attendance.show', $event->id)}}">Details</a> </td>
                             {{-- <td> <a href="{{route('event.edit', $event->id)}}">Edit</a> </td> --}}
-                            <td> 
+                            <td>   
+                            <a href="{{route('event.show', $event->id)}}"> 
+                                <input type="submit" value="Edit" />  
+                            </a>
+                            </td> 
+                            <td>  
                             <form action="{{route('event.destroy', $event->id)}}" method="POST" accept-charset="utf-8">
                                     <input name="_method" type="hidden" value="DELETE">
                                     {{ csrf_field() }}

@@ -1,7 +1,7 @@
-<?php 
+<?php  
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { 
+
 });
 
 Auth::routes();
@@ -11,11 +11,29 @@ Route::get('/home', 'HomeController@index');
 Route::get('admin/dashboard', 'PagesController@Dashboard')->name('pages.dashboard'); 
 Route::get('admin/sms', 'PagesController@Sms')->name('pages.sms'); 
 Route::get('admin/attendance', 'PagesController@Attendance')->name("pages.attendance"); 
-Route::get('admin/attendance/event/{id?}', 'PagesController@AttendanceEvent')->name("pages.attendance.event"); 
+Route::get('admin/attendance/event/{id?}', 'PagesController@AttendanceEvent')->name("pages.attendance.event");
+Route::get('student/profile', 'PagesController@studentProfile')->middleware('authStudent')->name("student.profile"); 
  
+Route::post('student/PostLogin', 'StudentController@PostLogin')->name("student.post.login");
+Route::get('student/logout', 'StudentController@LogOut')->name("student.logout");
+
+
+
+
+
+// student login
+
+// Route::post('student/postLogin', 'StudentController@PostLogin')->name('student.post.login');
+
+
 // default and resources routes
 Route::resource('user', 'UserController');
 Route::resource('attendance', 'AttendanceController');
 Route::resource('event', 'EventController');
 Route::resource('worker', 'EventController');
-  
+Route::resource('personnel', 'PersonnelController');
+Route::resource('student', 'StudentController');
+Route::resource('sms', 'SmsController');
+// Route::resource('student/event', 'StudentEventController'); 
+Route::post('student/event', 'StudentEventController@store')->name('student.event.store');
+

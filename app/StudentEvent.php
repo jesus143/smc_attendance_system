@@ -10,6 +10,7 @@ class StudentEvent extends Model
     protected $fillable = [
 	    'student_id',
 		'event_id',
-		'status' 
+		'status_in',
+		'status_out' 
     ]; 
 }

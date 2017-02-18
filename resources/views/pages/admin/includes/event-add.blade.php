@@ -36,18 +36,23 @@
         <em><lable>Personnels</lable></em><br>
         <select name="sponsor_personnels[]" multiple class="form-control" > 
           @foreach($personnels as $personnel)
-            <option value="{{$personnel->id}}">{{$personnel->first_name . ' ' . $personnel->last_name}},  
+            <option value="{{$personnel->id}}">{{$personnel->first_name  . ' ' . $personnel->last_name . ', ' . $personnel->department}},  
             {{$personnel->position}}</option>  
           @endforeach 
         </select> 
-        <br>
-        <label for="exampleInputEmail1">Sponsor</label>  
-        <em><lable>Students</lable></em><br>
-        <select name="sponsor_students[]" multiple class="form-control">
-        @foreach($students as $student) 
-          <option value="{{$student->id}}">{{$student->first_name . ' ' . $student->last_name . ', ' . $student->course . ', ' . $student->year_level}}</option> 
-        @endforeach   
-        </select>
+
+        <div style="display:none">
+          <br> 
+          <label for="exampleInputEmail1">Sponsor</label>  
+          <em><lable>Students</lable></em><br>
+          <select name="sponsor_students[]" multiple class="form-control">
+          @foreach($students as $student) 
+            <option value="{{$student->id}}">{{$student->first_name . ' ' . $student->last_name . ', ' . $student->course . ', ' . $student->year_level}}</option> 
+          @endforeach   
+          </select>
+        </div>
+  
+        <div style="display:none">
         <br>
         <label for="exampleInputEmail1">Sponsor</label>  
         <em><lable>Colleges</lable></em><br>
@@ -55,8 +60,11 @@
           @foreach($data['college'] as $college)
             <option value="{{$college}}">{{$college}}</option>  
           @endforeach
-        </select> 
+        </select>  
         <br>
+        </div>
+
+        <div style="display:none">
         <label for="exampleInputEmail1">Sponsor</label>  
         <em><lable>Year</lable></em><br>
         <select name="sponsor_year[]" multiple class="form-control">
@@ -65,6 +73,9 @@
             @endforeach
         </select> 
         <br>
+        </div>
+
+
     </div>
 
 
@@ -78,7 +89,8 @@
       </select>
     </div> 
 
-    <div class="form-group">
+    <div class="form-group"  style="display:none" >
+
       <label for="exampleSelect2">Participants</label> 
       <em><lable>Religion</lable></em><br>
       <select name="participant_religion[]" multiple class="form-control" id="exampleSelect2">
@@ -87,6 +99,7 @@
           @endforeach
       </select>
     </div> 
+
     <div class="form-group">
       <label for="exampleSelect2">Participants</label> 
       <em><lable>College Year</lable></em><br>

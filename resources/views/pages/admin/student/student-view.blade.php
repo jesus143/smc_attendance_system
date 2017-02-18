@@ -1,6 +1,5 @@
 
-<h3>Student List</h3>
-
+<h3>Student List</h3> 
   <div id="signupbox" style=" margin-top:50px; width:100%"  >
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -16,7 +15,8 @@
                         <th>Mobile Number</th> 
                         <th>Year level</th> 
                         <th>Course</th> 
-                        <th>Gender</th>   
+                        <th>Gender</th>    
+                        <th>Religion Description</th>   
                     </tr>
                 </thead>
                 <tfoot>
@@ -28,10 +28,18 @@
                         <th>Year level</th> 
                         <th>Course</th> 
                         <th>Gender</th>   
+                        <th>Religion Description</th>   
                     </tr>
                 </tfoot>
-                <tbody>  
-                   @include("pages/admin/includes/religion-sorting")     
+                <tbody>   
+                 <select id="msds-select" class="form-control" >
+                    <option>None</option>  
+                    @foreach($data['religion'] as $religion)  
+                        <option value="{{$religion}}">{{$religion}}</option>   
+                    @endforeach    
+                </select>
+                <br><br> 
+                <br><br>
                     @foreach($students as $student)  
                       <tr>
                         <td> {{$student->religion}} </td>
@@ -41,10 +49,9 @@
                         <td> {{$student->year_level}} </td>
                         <td> {{$student->course}} </td>
                         <td> {{$student->gender}} </td>  
+                        <td> {{$student->bio}} </td>  
                       </tr>
-                    @endforeach
-
-                   
+                    @endforeach 
                 </tbody>
             </table>
         </div>

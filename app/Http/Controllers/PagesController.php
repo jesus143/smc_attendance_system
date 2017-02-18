@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Sms;
+use App\Student;
 
 class PagesController extends Controller
 {
@@ -12,12 +14,14 @@ class PagesController extends Controller
 		return view("pages/admin/dashboard"); 
 	}
 	public function Sms() 
-	{
-		return view("pages/admin/sms"); 
+	{ 
+		// get all events  
+		 $events = Event::orderBy('id', 'desc')->get(); 
+		return view("pages/admin/sms", compact('events')); 
 	}
 	public function Attendance() 
 	{
-		$events = Event::all(); 
+		$events = Event::orderBy('id', 'desc')->get(); 
 		return view("pages/admin/attendance", compact('events')); 
 	} 
 	public function AttendanceEvent($eventId) 
@@ -28,24 +32,23 @@ class PagesController extends Controller
 	}  
 
 	public function studentProfile()
-	{
- 
-		$authStudent = session('authStudent');  
-		$studentInfo = [
-			'id_number' => $authStudent->id_number,
-			'first_name' => $authStudent->first_name,
-			'last_name' => $authStudent->last_name,
-			'mobile_number' => $authStudent->mobile_number,
-			'religion' => $authStudent->religion,
-			'year_level' => $authStudent->year_level,
-			'course' => $authStudent->course,
-			'gender' => $authStudent->gender,
-			'bio' => $authStudent->bio 
-		];   
+	{ 
+		   $studentInfo = session('authStudent');   
+		   $studentInfo = Student::find($studentInfo->id);
+		   $id  = $studentInfo->id;
+			// dd($studentInfo); 
+ 			$studentName = []; 
+            $studentName['Name'] = $studentInfo->first_name . ' ' . $studentInfo->last_name;
+            $studentName['Course'] = $studentInfo->course;
+            $studentName['Id Number'] = $studentInfo->id_number;
+            $studentName['Mobile Number'] = $studentInfo->mobile_number;
+            $studentName['Religion Specification'] = $studentInfo->religion;
+            $studentName['Religion Description'] = $studentInfo->bio; 
+            $studentName['Religion Description'] = $studentInfo->bio; 
+            $studentName['Year Level'] = $studentInfo->year_level; 
 
-
-
-		return view("pages/student-profile-home", compact('studentInfo'));
+            // dd($authStudent);  
+		return view("pages/student-profile-home", compact('studentName', 'id'));
 	} 
 
 

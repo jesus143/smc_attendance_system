@@ -17,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $data = [
                     'religion'=>[
-                        'Christian',
+                        'Catholic',
+                        'Non Catholic',
                         'Muslim' 
                     ], 
                     'attendanceStatus'=>[
@@ -40,6 +41,12 @@ class AppServiceProvider extends ServiceProvider
                         2=>'Second Year',
                         3=>'Third Year',
                         4=>'Fourth  Year' 
+                    ],
+                    'position' => [
+                        'Administrator',
+                        'Faculty',
+                        'Staff',
+                        'Dean'
                     ]
                 ];  
                 $view->with(compact('data')); 
