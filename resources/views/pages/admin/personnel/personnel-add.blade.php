@@ -20,7 +20,7 @@
                     <div id="div_id_username" class="form-group required">
                         <label for="id_username" class="control-label col-md-4  requiredField">Id Number<span class="asteriskField">*</span> </label>
                         <div class="controls col-md-8 ">
-                            <input class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="id_number" placeholder="First Name" style="margin-bottom: 10px" type="text" />
+                            <input class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="id_number" placeholder="id number" style="margin-bottom: 10px" type="text" />
                         </div>
                     </div>
 

@@ -49,16 +49,23 @@ class AttendanceController extends Controller
      */
     public function show($id)
     {            
-        // in
+        // student attendance
         $studentEvents = DB::table('student_events')
             ->join('students', 'student_events.student_id', '=', 'students.id')  
             ->where('student_events.event_id', $id)
             ->select('students.*', 'student_events.*' )
-            ->get();  
- 
+            ->get();
+
+        // personnel attendance
+         $personnelEvents = DB::table('personnel_events')
+            ->join('personnels', 'personnel_events.personnel_id', '=', 'personnels.id')
+            ->where('personnel_events.event_id', $id)
+            ->select('personnels.*', 'personnel_events.*' )
+            ->get();
+
  
         $event = Event::where('id', $id)->get(); 
-        return view("pages/admin/attendance/attendance-detail", compact('event', 'id', 'studentEvents'));  
+        return view("pages/admin/attendance/attendance-detail", compact('event', 'id', 'studentEvents', 'personnelEvents'));
     }
 
     /**
@@ -91,11 +98,12 @@ class AttendanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
 
-        print " id $id";
+        // delete student
         $studentEvent = StudentEvent::find($id); 
         $studentEvent->delete();
-        return redirect()->back()->with('delete_student_attendance_status', 'Successfully deleted attendance'); 
+        return redirect()->back()->with('delete_student_attendance_status', 'Successfully deleted attendance');
+
     }
 }

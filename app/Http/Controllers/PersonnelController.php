@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Personnel; 
+use App\Personnel;
+use DB;
 
 class PersonnelController extends Controller
 {
@@ -18,7 +19,7 @@ class PersonnelController extends Controller
         $personnels = Personnel::orderBy('id', 'desc')->get(); 
         return view("pages/admin/personnel-home", compact('personnels')); 
     }
- 
+
   
 
     /**
@@ -93,5 +94,16 @@ class PersonnelController extends Controller
         print " id " . $id ;
         Personnel::find($id)->delete();
         return redirect()->back()->with('status', 'Successfully deleted!');
+    }
+
+    public function searchDetail($id)
+    {
+        $personnelEvents= DB::table('personnel_events')
+            ->join('events', 'personnel_events.event_id', '=', 'events.id')
+            ->select('personnel_events.*', 'events.*')
+            ->where('personnel_events.personnel_id', $id)
+            ->get();
+
+        return view('pages/admin/personnel/personnel-search-detail', compact('personnelEvents'));
     }
 }

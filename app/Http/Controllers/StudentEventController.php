@@ -109,7 +109,7 @@ class StudentEventController extends Controller
                 
                 if(in_array($studentInfo->year_level, $participant_year_arr)) {
                 } else { 
-                    return redirect()->back()->with("message", 'Your year level is ' . $studentInfo->year_level . ' and but only ' . $eventDetails->participant_year . ' is allowed for this event');
+                    return redirect()->back()->with("message", 'Student year level is ' . $studentInfo->year_level . ' and but only ' . $eventDetails->participant_year . ' is allowed for this event');
                 }         
 
 
@@ -138,9 +138,9 @@ class StudentEventController extends Controller
             // dd($data); 
          
         if($request->get('status') == 'in') { 
-            return redirect()->back()->with("message", 'Successfully signed in');
+            return redirect()->back()->with("message", 'Student Successfully signed in');
         } else { 
-            return redirect()->back()->with("message", 'Successfully signed out');
+            return redirect()->back()->with("message", 'Student Successfully signed out');
         }
         
 

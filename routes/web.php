@@ -26,8 +26,11 @@ Route::get('student/logout', 'StudentController@LogOut')->name("student.logout")
 // Route::post('student/postLogin', 'StudentController@PostLogin')->name('student.post.login');
 
 
+Route::get('personnel/search/{id}', 'PersonnelController@searchDetail')->name('personnel.search.detail');
 Route::get('student/search/{id}', 'StudentController@searchDetail')->name('student.search.detail');
 
+
+Route::post('personnel/event', 'PersonnelEventController@store')->name('personnel.event.store');
 
 // default and resources routes
 Route::resource('user', 'UserController');
@@ -37,6 +40,6 @@ Route::resource('worker', 'EventController');
 Route::resource('personnel', 'PersonnelController');
 Route::resource('student', 'StudentController');
 Route::resource('sms', 'SmsController');
-// Route::resource('student/event', 'StudentEventController'); 
+// Route::resource('student/event', 'StudentEventController');
 Route::post('student/event', 'StudentEventController@store')->name('student.event.store');
 

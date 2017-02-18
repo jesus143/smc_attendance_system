@@ -51,7 +51,7 @@
                         <td> {{$student->course}} </td>
                         <td> {{$student->gender}} </td>
                         <td> {{$student->bio}} </td>  
-                        <td> <a href="{{route('student.search.detail', $student->id)}}">Attendace Details</a> </td>
+                        <td> <a href="{{route('student.search.detail', $student->id)}}">Attendance Details</a> </td>
                       </tr>
                     @endforeach 
                 </tbody>

@@ -39,7 +39,7 @@
                                         </tr>
                                         </tfoot>
                                         <tbody>
-                                            @foreach($userEvents as $event)
+                                            @foreach($personnelEvents as $event)
                                                 <tr>
                                                     <td>  {{$event->name}} </td>
                                                     <td>  {{$event->venue}} </td>

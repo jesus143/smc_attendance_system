@@ -12,7 +12,7 @@
                 <div class="panel-body">   
                     @include("pages/admin/personnel/personnel-add");
                     <hr> 
-                    @include("pages/admin/personnel/personnel-view", compact('personnels'));
+                    @include("pages/admin/personnel/personnel-view");
                 </div>
             </div>
         </div>

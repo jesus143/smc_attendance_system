@@ -9,6 +9,7 @@ class Personnel extends Model
     protected $table = 'personnels'; 
 
     protected $fillable = [
+    	'id_number',
     	'first_name',
 		'last_name',
 		'mobile_number',
