@@ -6,8 +6,8 @@ if(!session_id()) {
 require_once ('../index.php');
 
 $url = url('');
-$url = str_replace('home/index.php', '', $url);
-
-$postLogin = $url . 'student/PostLogin';
-$postLoginPersonnel = $url . '/personnel/PostLogin';
-?>
+$url = str_replace('index.php', '', $url);
+$url = str_replace('home', '', $url);
+ 
+$postLogin = $url . '/student/PostLogin';
+$postLoginPersonnel = $url . '/personnel/PostLogin'; 
