@@ -39,6 +39,35 @@ Route::get('student/search/{id}', 'StudentController@searchDetail')->name('stude
 
 Route::post('personnel/event', 'PersonnelEventController@store')->name('personnel.event.store');
 
+
+
+
+
+
+
+
+
+
+
+///////////////////
+Route::get('personnel/print/{id?}', 'AttendanceController@printSpecificPersonnelAttendance')->name('attendance.personnel.specific.print');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // default and resources routes
 Route::resource('user', 'UserController');
 Route::resource('attendance', 'AttendanceController');

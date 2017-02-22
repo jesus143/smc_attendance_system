@@ -120,6 +120,7 @@ class AttendanceController extends Controller
 
         return view('pages/admin/attendance/attendance-print-student', compact('eventDetails'));
     }
+
     public function printPersonnel($event_id) {
 
         $eventDetails = DB::table('events')
@@ -128,9 +129,26 @@ class AttendanceController extends Controller
             ->select('personnel_events.*', 'events.*', 'personnels.*')
             ->where('events.id', $event_id)
             ->get();
-
-
-
         return view('pages/admin/attendance/attendance-print-personnel', compact('eventDetails'));
     }
+
+    public function printSpecificPersonnelAttendance($personnel_id)
+    {
+
+
+        // get personnel attendance
+        $userEvents= DB::table('personnel_events')
+            ->join('events', 'personnel_events.event_id', '=', 'events.id')
+            ->join('personnels', 'personnels.id', '=', 'personnel_events.personnel_id')
+            ->select('personnel_events.*', 'events.*', 'personnels.*')
+            ->where('personnel_events.personnel_id', $personnel_id)
+            ->get();
+
+//        dd($userEvents);
+        return view("pages/admin/attendance/attendance-print-specific-personnel", compact('userEvents' ));
+
+
+    }
+
+
 }

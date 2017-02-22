@@ -19,6 +19,8 @@ class CreatePersonnelsTable extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->string("mobile_number");
+            $table->string("religion")->nullable();
+            $table->string("bio")->nullable();
             $table->string("position");
             $table->string("department");    
             $table->string("gender");    

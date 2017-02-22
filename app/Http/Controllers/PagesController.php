@@ -48,7 +48,7 @@ class PagesController extends Controller
             $studentName['Mobile Number'] = $studentInfo->mobile_number;
             $studentName['Religion Specification'] = $studentInfo->religion;
             $studentName['Religion Description'] = $studentInfo->bio; 
-            $studentName['Religion Description'] = $studentInfo->bio; 
+//            $studentName['Religion Description'] = $studentInfo->bio;
             $studentName['Year Level'] = $studentInfo->year_level;
 
 		// get upcoming events
@@ -84,7 +84,9 @@ class PagesController extends Controller
 			$personnelName['College'] = $personnelInfo->department;
 			$personnelName['Id Number'] = $personnelInfo->id_number;
 			$personnelName['Mobile Number'] = $personnelInfo->mobile_number;
-            $personnelName['Position'] = $personnelInfo->position;
+			$personnelName['Religion Specification'] = $personnelInfo->religion;
+			$personnelName['Religion Description'] = $personnelInfo->bio;
+			$personnelName['Position'] = $personnelInfo->position;
 
 		// get upcoming events
 		$upComingEvents = Event::where('date_time_start', '>=', date('Y-m-d H:i:s') )

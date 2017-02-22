@@ -59,8 +59,10 @@
                                                     </select>
                                                 @elseif($key == 'Mobile Number')  
                                                         <input type="text" value="{{$value}}" name="mobile_number" />
-                                                @elseif($key == 'Religion Description')  
+                                                @elseif($key == 'Religion Description'  )
                                                     <textarea name="bio" style="height:100px; width:300px;resize:none">{{$value}}</textarea>
+                                                @elseif($key == 'Position')
+                                                    <input type="text" name="position" value="{{$value}}" />
                                                 @else  
                                                     <div class="profile-info-value">
                                                         <span>{{$value}}</span>

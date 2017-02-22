@@ -1,7 +1,7 @@
 
 
 <hr>
-<H2> Student Event Attendance</H2> <br>
+<H2> Personnel Event Attendance</H2> <br>
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -39,3 +39,11 @@
     @endforeach
     </tbody>
 </table>
+
+
+
+<br>
+
+<a href="{{route('attendance.personnel.specific.print', $id)}}">
+    <input type="button" value="Print" class="alert alert-info" />
+</a>

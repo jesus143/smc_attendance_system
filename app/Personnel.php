@@ -13,6 +13,8 @@ class Personnel extends Model
     	'id_number',
     	'first_name',
 		'last_name',
+		'religion',
+		'bio',
 		'mobile_number',
 		'position',
 		'department',
