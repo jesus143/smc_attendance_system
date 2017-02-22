@@ -16,15 +16,29 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    { 
-        $personnels = Personnel::getAllOrderByDesc();  
+    public function index($type='student')
+    {
+        $personnels = Personnel::getAllOrderByDesc();
         $students   = Student::getAllOrderByDesc();
-        $events   = Event::getAllOrderByDesc();
+//        print " type " . $type;
+        if($type=='student') {
+            $events   = Event::where('type', 'student')->orderBy('id', 'desc')->get();
+            return view('pages/admin/event-home', compact('personnels', 'students', 'events'));
+        } else {
+            $events   = Event::where('type', 'personnel')->orderBy('id', 'desc')->get();
+            return view('pages/admin/event/event-home-personnel', compact('personnels', 'students', 'events'));
+        }
 
-        return view('pages/admin/event-home', compact('personnels', 'students', 'events')); 
+
     }
 
+
+    public function createOption()
+    {
+
+
+        return view('pages/admin/event/event-select-type');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -66,13 +80,20 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $type='student')
     {
 
-         $personnels  = Personnel::getAllOrderByDesc();  
-        $students     = Student::getAllOrderByDesc();
-        $events       = Event::getAllOrderByDesc();
+//        print  "type in show " . $type ;
         $eventDetails = Event::find($id);
+        $personnels = Personnel::getAllOrderByDesc();
+        $students   = Student::getAllOrderByDesc();
+
+        if($type=='student') {
+            $events   = Event::where('type', 'student')->orderBy('id', 'desc')->get();
+        } else {
+            $events   = Event::where('type', 'personnel')->orderBy('id', 'desc')->get();
+        }
+
 
         return view('pages/admin/event-home', compact('personnels', 'students', 'events', 'eventDetails', 'id'));  
         // return "show specific event";

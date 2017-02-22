@@ -68,6 +68,35 @@ class AttendanceController extends Controller
         return view("pages/admin/attendance/attendance-detail", compact('event', 'id', 'studentEvents', 'personnelEvents'));
     }
 
+
+
+    public function attendancePersonnel($id, $type='student') {
+        // student attendance
+        $studentEvents = DB::table('student_events')
+            ->join('students', 'student_events.student_id', '=', 'students.id')
+            ->where('student_events.event_id', $id)
+            ->select('students.*', 'student_events.*' )
+            ->get();
+
+        // personnel attendance
+        $personnelEvents = DB::table('personnel_events')
+            ->join('personnels', 'personnel_events.personnel_id', '=', 'personnels.id')
+            ->where('personnel_events.event_id', $id)
+            ->select('personnels.*', 'personnel_events.*' )
+            ->get();
+
+
+        $event = Event::where('id', $id)->get();
+
+
+        if($type == 'student') {
+            return view("pages/admin/attendance/attendance-detail", compact('event', 'id', 'studentEvents', 'personnelEvents'));
+        } else {
+             return view("pages/admin/attendance/attendance-detail-personnel", compact('event', 'id', 'studentEvents', 'personnelEvents'));
+        }
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -134,6 +134,6 @@ class PersonnelController extends Controller
             ->where('personnel_events.personnel_id', $id)
             ->get();
 
-        return view('pages/admin/personnel/personnel-search-detail', compact('userEvents'));
+        return view('pages/admin/personnel/personnel-search-detail', compact('personnelEvents'));
     }
 }

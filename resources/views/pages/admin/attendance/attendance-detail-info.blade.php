@@ -25,17 +25,9 @@
         <td> sponsor personnels </td>
         <td>{{App\Personnel::getNamesByIdList($value->sponsor_personnels)}}</td>
         </tr>
-        <td style="display:none"> sponsor students </td>
-        <td style="display:none" >{{App\Student::getNamesByIdList($value->sponsor_students)}}</td>
-        </tr>
-        <td style="display:none"> sponsor college </td>
-        <td style="display:none">{{$value->sponsor_collge}}</td>
-        </tr>
-        <td style="display:none"> sponsor year </td>
-        <td style="display:none">{{$value->sponsor_year}}</td>
-        </tr>
-        <td> participant college </td>
-        <td>{{$value->participant_collge}}</td>
+
+        <td> participant personnel </td>
+        <td>{{App\Personnel::getNamesByIdList($value->participant_personnels)}}</td>
         </tr>
         <td style="display:none"> participant religion </td>
         <td style="display:none">{{$value->participant_religion}}</td>

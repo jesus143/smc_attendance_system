@@ -51,15 +51,15 @@
                             <td>{{$event->description}}</td>
                             <td>{{$event->date_time_start}}</td>
                             <td>{{$event->date_time_end}}</td>  
-                            <td> <a href="{{route('attendance.show', $event->id)}}">Details</a> </td>
+                            <td> <a href="{{route('attendance.show', $event->id)  . '/student' }} ">Details</a> </td>
                             {{-- <td> <a href="{{route('event.edit', $event->id)}}">Edit</a> </td> --}}
                             <td>   
-                            <a href="{{route('event.show', $event->id)}}"> 
+                            <a href="{{route('event.show', $event->id )  . '/student' }}">
                                 <input type="submit" value="Edit" />  
                             </a>
                             </td> 
                             <td>  
-                            <form action="{{route('event.destroy', $event->id)}}" method="POST" accept-charset="utf-8">
+                            <form action="{{route('event.destroy', $event->id ) }}" method="POST" accept-charset="utf-8">
                                     <input name="_method" type="hidden" value="DELETE">
                                     {{ csrf_field() }}
                                     <input type="submit" value="delete" /> 

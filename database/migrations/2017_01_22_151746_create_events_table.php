@@ -29,6 +29,8 @@ class CreateEventsTable extends Migration
             $table->string('participant_collge')->default("");
             $table->string('participant_religion')->default("");
             $table->string('participant_year')->default(""); 
+            $table->string('participant_personnels')->default("");
+            $table->string('type')->default("");
 
             $table->dateTime('date_time_start');
             $table->dateTime('date_time_end');

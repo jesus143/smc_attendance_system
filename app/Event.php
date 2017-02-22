@@ -21,6 +21,8 @@ class Event extends Model
 		'participant_collge',
 		'participant_religion',
 		'participant_year',
+		'participant_personnels',
+		'type',
 		'date_time_start',
 		'date_time_end',
 	]; 

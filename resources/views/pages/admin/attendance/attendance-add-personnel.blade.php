@@ -1,5 +1,22 @@
 <h1> Add Personnel for this event </h1>
 
+<div>
+    <ul class="list-group" >
+        @foreach ($errors->all() as $message)
+            <li  class="list-group-item alert alert-danger" >
+                {{$message}}
+            </li>
+        @endforeach
+
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        @endif
+
+    </ul>
+</div>
+
 <form class="form-inline" action="{{route('personnel.event.store')}}" method="POST" >
     {{csrf_field()}}
     <input type="hidden" value="{{$id}}" name="event_id" />

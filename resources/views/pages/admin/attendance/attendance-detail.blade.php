@@ -10,11 +10,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div> 
                 <div class="panel-body">   
-                    @include("pages/admin/attendance/attendance-add-student", compact('id')) 
-                    @include("pages/admin/attendance/attendance-add-personnel", compact('id'))
+                    @include("pages/admin/attendance/attendance-add-student", compact('id'))
                     @include("pages/admin/attendance/attendance-detail-info")
-                    @include("pages/admin/attendance/attendance-students", compact('studentEvents')) 
-                    @include("pages/admin/attendance/attendance-personnel")
+                    @include("pages/admin/attendance/attendance-students", compact('studentEvents'))
                 </div>
             </div>
         </div>

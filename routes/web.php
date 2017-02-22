@@ -49,22 +49,6 @@ Route::post('personnel/event', 'PersonnelEventController@store')->name('personne
 
 
 
-///////////////////
-Route::get('personnel/print/{id?}', 'AttendanceController@printSpecificPersonnelAttendance')->name('attendance.personnel.specific.print');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -79,3 +63,14 @@ Route::resource('sms', 'SmsController');
 // Route::resource('student/event', 'StudentEventController');
 Route::post('student/event', 'StudentEventController@store')->name('student.event.store');
 
+
+
+
+///////////////////
+
+Route::get('attendance/{event_id?}/{type?}', 'AttendanceController@attendancePersonnel')->name('attendance.show');
+
+Route::get('personnel/print/{id?}', 'AttendanceController@printSpecificPersonnelAttendance')->name('attendance.personnel.specific.print');
+Route::get('event-create/{type?}', 'EventController@index')->name('event.index');
+Route::get('event-create-select', 'EventController@createOption')->name('event.create.select');
+Route::get('event/update/{id?}/{type?}', 'EventController@show')->name('event.show');

@@ -90,7 +90,7 @@ class PagesController extends Controller
 
 		// get upcoming events
 		$upComingEvents = Event::where('date_time_start', '>=', date('Y-m-d H:i:s') )
-			->where('participant_collge', 'like', '%' .   $personnelInfo->department . '%' )
+		//			->where('participant_collge', 'like', '%' .   $personnelInfo->department . '%' )
 			->get();
 
 		// get personnel attendance
